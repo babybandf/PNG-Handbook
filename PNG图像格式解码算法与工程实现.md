@@ -2,8 +2,8 @@
 
 > 从文件格式、Chunk、zlib、DEFLATE，到 Scanline 重建、Adam7、颜色处理与硬件架构
 
-版本：0.9  
-日期：2026-08-19  
+版本：0.9
+日期：2026-08-19
 适用对象：PNG 初学者、软件解码器开发者、FPGA/ASIC/RTL 设计工程师
 
 ---
@@ -209,6 +209,36 @@ Chunk Type 的四个字符必须是英文字母。每个字符 ASCII 值的 bit 
 例如 IDAT 的首字符 I 为大写，所以它是 Critical Chunk。tEXt 首字符小写，所以它是 Ancillary Chunk。
 
 未知 Critical Chunk 意味着 Decoder 不知道如何正确解释图像，必须报错。未知 Ancillary Chunk 通常可以跳过，但编辑器是否可在修改图像后原样保留，还要看第四字符的 safe-to-copy 属性。
+
+常见 PNG 与 APNG Chunk Type 如下：
+
+| Chunk Type | 类别 | 意义说明 |
+|---|---|---|
+| IHDR | Critical | 图像头；定义宽高、位深、颜色类型、压缩、Filter 和交错方法 |
+| PLTE | Critical | 调色板；为索引色提供 RGB 条目，也可为真彩色提供建议调色板 |
+| IDAT | Critical | 图像数据；所有连续 Data 按顺序拼接为一个 zlib 数据流 |
+| IEND | Critical | 图像结束标记；Data 长度必须为 0 |
+| tRNS | Ancillary | 透明度；为灰度、真彩色指定透明 Sample，或为调色板指定 Alpha |
+| cHRM | Ancillary | 白点与 RGB 原色色度坐标 |
+| gAMA | Ancillary | 图像编码值对应的 Gamma 信息 |
+| iCCP | Ancillary | 压缩的 ICC 颜色 Profile |
+| sRGB | Ancillary | 标识图像使用 sRGB 颜色空间及渲染意图 |
+| cICP | Ancillary | 色彩原色、传输特性、矩阵系数与范围标识 |
+| mDCv | Ancillary | HDR 母版显示器的色域和亮度信息 |
+| cLLi | Ancillary | HDR 内容的最大亮度与最大平均亮度信息 |
+| sBIT | Ancillary | 原始样本的有效位数 |
+| bKGD | Ancillary | 建议显示背景色 |
+| hIST | Ancillary | 调色板条目的使用频率 |
+| pHYs | Ancillary | 像素物理尺寸或像素宽高比 |
+| sPLT | Ancillary | 建议调色板 |
+| tEXt | Ancillary | 未压缩 Latin-1 文本键值对 |
+| zTXt | Ancillary | 压缩 Latin-1 文本键值对 |
+| iTXt | Ancillary | 国际化 UTF-8 文本，可选压缩 |
+| eXIf | Ancillary | Exif 元数据 |
+| tIME | Ancillary | 图像最后修改时间 |
+| acTL | Ancillary | APNG 动画控制；给出帧数与播放次数 |
+| fcTL | Ancillary | APNG 帧控制；定义帧区域、时间和混合方式 |
+| fdAT | Ancillary | APNG 后续帧的压缩图像数据 |
 
 ## 7. IHDR：图像的总合同
 
@@ -1808,34 +1838,34 @@ pass_height =
 
 # 附录 B　常见误解
 
-1. **“每个 IDAT 都是一个 zlib 流。”**  
+1. **“每个 IDAT 都是一个 zlib 流。”**
    错。所有连续 IDAT Data 拼成一个 zlib 流。
 
-2. **“IDAT Data 就是 Raw DEFLATE。”**  
+2. **“IDAT Data 就是 Raw DEFLATE。”**
    错。PNG Compression Method 0 使用带 CMF/FLG 和 Adler-32 的 zlib 包装。
 
-3. **“DEFLATE 解压后就是 RGB。”**  
+3. **“DEFLATE 解压后就是 RGB。”**
    错。先得到 Filter Type 与 Filtered Scanline。
 
-4. **“Filter 按像素预测。”**  
+4. **“Filter 按像素预测。”**
    不精确。规范算法按序列化 byte 处理，左邻距离为 bpp。
 
-5. **“DEFLATE Block 在每行结束。”**  
+5. **“DEFLATE Block 在每行结束。”**
    错。Block 与 Scanline 无固定对齐关系。
 
-6. **“Block 结束要清空32 KiB Window。”**  
+6. **“Block 结束要清空32 KiB Window。”**
    错。LZ77 可跨 Block 引用。
 
-7. **“有32行缓存就能32行并行。”**  
+7. **“有32行缓存就能32行并行。”**
    错。还受 DEFLATE 串行输出、Filter 依赖、存储端口和 VDMA 限制。
 
-8. **“PNG 的32K指行缓存。”**  
+8. **“PNG 的32K指行缓存。”**
    错。通常指 DEFLATE 最大32768-byte History Window。
 
-9. **“Alpha 也做 Gamma Correction。”**  
+9. **“Alpha 也做 Gamma Correction。”**
    错。Alpha 是线性覆盖率。
 
-10. **“16-bit PNG 是小端。”**  
+10. **“16-bit PNG 是小端。”**
     错。PNG Sample 和 Chunk 整数按高字节在前；Stored Block 的 LEN/NLEN 是 DEFLATE 内部例外，按 little-endian。
 
 # 附录 C　APNG 概览
@@ -1862,14 +1892,14 @@ APNG 详细帧合成属于独立扩展主题；静态 PNG 的 Chunk、zlib、DEF
 
 # 附录 E　参考资料
 
-1. W3C, Portable Network Graphics (PNG) Specification, Third Edition:  
+1. W3C, Portable Network Graphics (PNG) Specification, Third Edition:
    https://www.w3.org/TR/png-3/
-2. W3C, Portable Network Graphics (PNG) Specification, Fourth Edition Editor's Draft:  
+2. W3C, Portable Network Graphics (PNG) Specification, Fourth Edition Editor's Draft:
    https://w3c.github.io/png/
 3. ISO/IEC 15948:2004, Information technology — Computer graphics and image processing — Portable Network Graphics (PNG): Functional specification.
-4. RFC 1950, ZLIB Compressed Data Format Specification version 3.3:  
+4. RFC 1950, ZLIB Compressed Data Format Specification version 3.3:
    https://www.rfc-editor.org/rfc/rfc1950
-5. RFC 1951, DEFLATE Compressed Data Format Specification version 1.3:  
+5. RFC 1951, DEFLATE Compressed Data Format Specification version 1.3:
    https://www.rfc-editor.org/rfc/rfc1951
 6. W3C PNG Test Suite and implementation resources，见 PNG Specification 的 Online resources。
 
