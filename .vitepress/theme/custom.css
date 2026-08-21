@@ -1,0 +1,9 @@
+.VPSidebar .group:has(> .VPSidebarItem > .items),
+.VPSidebar .group:has(> .VPSidebarItem > .items) + .group {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.VPSidebar .group:has(> .VPSidebarItem > .items) > .VPSidebarItem > .items {
+  padding-left: 16px;
+}
