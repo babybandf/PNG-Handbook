@@ -13,13 +13,8 @@ const chapters = [
   { text: '03. 像素与 Scanline', link: '/cn/03' },
   { text: '04. 完整 Decoder 数据流', link: '/cn/04' },
   { text: '05. zlib', link: '/cn/05' },
-  {
-    text: '06. DEFLATE 解码',
-    link: '/cn/06',
-    items: [
-      { text: '06.1 PNG Huffman 编码详解', link: '/cn/06_1' },
-    ],
-  },
+  { text: '06. DEFLATE 解码', link: '/cn/06' },
+  { text: '06-1 PNG Huffman 编码详解', link: '/cn/06-1' },
   { text: '07. Scanline Filter 与重建', link: '/cn/07' },
   { text: '08. Adam7', link: '/cn/08' },
   { text: '09. 颜色、Alpha 与输出', link: '/cn/09' },

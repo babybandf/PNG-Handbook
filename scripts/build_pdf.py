@@ -116,7 +116,7 @@ def parse_args() -> argparse.Namespace:
 
 def chapter_files() -> list[Path]:
     names = [f"{index:02d}" for index in range(7)]
-    names.append("06_1")
+    names.append("06-1")
     names.extend(f"{index:02d}" for index in range(7, 15))
     files = [CN_DIR / f"{name}.md" for name in names]
     missing = [str(path.relative_to(ROOT)) for path in files if not path.exists()]
@@ -177,8 +177,7 @@ def annotate_chapters(files: list[Path]) -> tuple[str, list[tuple[int, str, str]
                 f'<a href="https://png-handbook.invalid/{anchor}" '
                 'class="pdf-bookmark-probe" aria-hidden="true">&#8203;</a>'
             )
-            toc_level = level + 1 if "_" in path.stem else level
-            toc.append((toc_level, plain_heading(title), anchor))
+            toc.append((level, plain_heading(title), anchor))
 
         sections.append("\n".join(output_lines).strip())
 

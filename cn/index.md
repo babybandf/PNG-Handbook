@@ -12,7 +12,7 @@
 4. [完整 Decoder 数据流](/cn/04)
 5. [zlib](/cn/05)
 6. [DEFLATE 解码](/cn/06)
-   - [06-1 PNG Huffman 编码详解](/cn/06_1)
+   - [06-1 PNG Huffman 编码详解](/cn/06-1)
 7. [Scanline Filter 与重建](/cn/07)
 8. [Adam7](/cn/08)
 9. [颜色、Alpha 与输出](/cn/09)

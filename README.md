@@ -22,7 +22,7 @@ npm run docs:dev
 npm run docs:build
 ```
 
-全书内容按独立章节维护在 `cn/00.md` 至 `cn/14.md`。
+全书内容按独立章节维护在 `cn/00.md` 至 `cn/14.md`，以及 `cn/06-1.md`。
 
 ## 生成 PDF
 
