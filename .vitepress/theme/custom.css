@@ -4,6 +4,14 @@
   padding-top: 0;
 }
 
-.VPSidebar .group:has(> .VPSidebarItem > .items) > .VPSidebarItem > .items {
+.VPSidebar .group:has(> .VPSidebarItem > .items) > .VPSidebarItem > .item > .link {
   padding-left: 16px;
+}
+
+.VPSidebar .group:has(> .VPSidebarItem > .items) > .VPSidebarItem > .item > .link > .text {
+  margin: 0;
+}
+
+.VPSidebar .group:has(> .VPSidebarItem > .items) > .VPSidebarItem > .items {
+  padding-left: 32px;
 }
