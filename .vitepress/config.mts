@@ -24,9 +24,11 @@ const chapters = [
   { text: '14. 附录与结语', link: '/cn/14' },
 ]
 
+const base = process.env.GITHUB_ACTIONS ? '/PNG-Handbook/' : '/'
+
 export default withMermaid(
   defineConfig({
-    base: '/PNG-Handbook/',
+    base,
     lang: 'zh-CN',
     title: 'PNG 图像格式、解码算法与工程实现',
     description: '从 PNG 文件格式到软硬件解码器实现的系统手册',
@@ -75,7 +77,6 @@ export default withMermaid(
     srcExclude: [
       '**/README.md',
       'scripts/**',
-      'PNG图像格式解码算法与工程实现.md',
     ],
   }),
 )

@@ -3,7 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "book:split": "node scripts/split-book.mjs",
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"

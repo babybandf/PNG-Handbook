@@ -10,28 +10,24 @@
 
 ## 目录与职责
 
-- `PNG图像格式解码算法与工程实现.md`：全书内容的唯一源文档。
-- `cn/00.md` 至 `cn/14.md`：由拆分脚本生成的章节文件。
+- `cn/00.md` 至 `cn/14.md`：独立维护的章节文件，文件编号与一级标题编号一致。
 - `cn/index.md`：手工维护的全书目录页，不由拆分脚本生成。
 - `index.md`：VitePress 首页。
 - `.vitepress/config.mts`：站点导航、侧栏、搜索、Markdown 和 Mermaid 配置。
-- `scripts/split-book.mjs`：将源文档拆分为 15 个章节，并校验重组内容与原文逐字一致。
 - `scripts/build_pdf.py`：合并章节、生成可点击目录、校验 Mermaid SVG，并调用 Edge/Chrome 输出 PDF。
 - `PNG图像格式解码算法与工程实现.pdf`：提交到仓库的合订 PDF，由构建脚本覆盖生成。
 - `.vitepress/dist/`、`.vitepress/cache/`：生成物，不作为源文件维护。
 
 ## 内容修改规则
 
-1. 正文内容应先修改根目录源文档，然后运行 `npm run book:split` 更新 `cn/00.md` 至 `cn/14.md`。
-2. 不要只修改生成章节中的正文，否则下次拆分会覆盖这些修改。
-3. `cn/index.md`、`index.md` 和站点配置是手工维护文件，可直接编辑。
-4. 若增加、删除或重排“篇”，必须同步更新：
-   - `scripts/split-book.mjs` 中的章节边界；
+1. 正文内容直接修改对应的 `cn/00.md` 至 `cn/14.md` 文件。
+2. `cn/index.md`、`index.md` 和站点配置是手工维护文件，可直接编辑。
+3. 若增加、删除或重排章节，必须同步更新：
    - `.vitepress/config.mts` 中的 `chapters`；
    - `cn/index.md`；
    - `scripts/build_pdf.py` 中的章节文件预期。
-5. 保留中文标点、全角篇章空格和现有术语写法。不要无关地重排表格或改写技术术语。
-6. Mermaid 使用 fenced code block，并保持 `mermaid` 语言标识；不要把图替换成未经验证的静态占位文本。
+4. 保留中文标点、全角篇章空格和现有术语写法。不要无关地重排表格或改写技术术语。
+5. Mermaid 使用 fenced code block，并保持 `mermaid` 语言标识；不要把图替换成未经验证的静态占位文本。
 
 ## 环境与常用命令
 
@@ -39,7 +35,6 @@
 
 ```bash
 npm install
-npm run book:split
 npm run docs:dev
 npm run docs:build
 python -m pip install -r requirements.txt
@@ -59,7 +54,6 @@ PDF 默认输出并覆盖根目录的 `PNG图像格式解码算法与工程实�
 
 根据改动范围运行最小且充分的检查：
 
-- 修改源文档或拆分逻辑：运行 `npm run book:split`，必须看到重组校验通过。
 - 修改章节、首页、导航或 VitePress 配置：运行 `npm run docs:build`。
 - 修改 Mermaid、打印样式、目录生成或 PDF 脚本：运行 `python scripts/build_pdf.py`。
 - PDF 验证必须包含脚本输出的 Mermaid 和书签校验；当前手册预期有 6 个 Mermaid 图，全部一至三级标题必须具有可跳转的书签目标。
@@ -76,4 +70,4 @@ PDF 默认输出并覆盖根目录的 `PNG图像格式解码算法与工程实�
 
 ## 完成标准
 
-改动应保持以下流程可用：源文档可无损拆章，15 个章节可由 VitePress 构建，站点具有全局目录入口，PDF 正文不插入额外的详细目录页、具有完整可跳转书签，且 Mermaid 在 PDF 中显示为渲染后的图形。
+改动应保持以下流程可用：15 个独立章节可由 VitePress 构建，站点具有全局目录入口，PDF 正文不插入额外的详细目录页、具有完整可跳转书签，且 Mermaid 在 PDF 中显示为渲染后的图形。

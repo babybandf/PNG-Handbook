@@ -22,13 +22,7 @@ npm run docs:dev
 npm run docs:build
 ```
 
-源文档更新后，重新生成 `cn` 章节：
-
-```bash
-npm run book:split
-```
-
-拆分脚本会校验所有章节重组后与源文档逐字一致。
+全书内容按独立章节维护在 `cn/00.md` 至 `cn/14.md`。
 
 ## 生成 PDF
 
