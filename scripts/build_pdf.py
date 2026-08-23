@@ -117,7 +117,7 @@ def parse_args() -> argparse.Namespace:
 def chapter_files() -> list[Path]:
     names = [f"{index:02d}" for index in range(7)]
     names.append("06-1")
-    names.extend(f"{index:02d}" for index in range(7, 15))
+    names.extend(f"{index:02d}" for index in range(7, 16))
     files = [CN_DIR / f"{name}.md" for name in names]
     missing = [str(path.relative_to(ROOT)) for path in files if not path.exists()]
     if missing:
