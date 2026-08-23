@@ -23,6 +23,7 @@ const chapters = [
   { text: '12. 错误、安全与验证', link: '/cn/12' },
   { text: '13. 贯通实例', link: '/cn/13' },
   { text: '14. PNG 图像测试集与验证资源汇总', link: '/cn/14' },
+  { text: '14-1 PngSuite 测试集分类与图片说明', link: '/cn/14-1' },
   { text: '15. 附录与结语', link: '/cn/15' },
 ]
 

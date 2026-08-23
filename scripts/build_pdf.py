@@ -117,7 +117,8 @@ def parse_args() -> argparse.Namespace:
 def chapter_files() -> list[Path]:
     names = [f"{index:02d}" for index in range(7)]
     names.append("06-1")
-    names.extend(f"{index:02d}" for index in range(7, 16))
+    names.extend(f"{index:02d}" for index in range(7, 15))
+    names.extend(("14-1", "15"))
     files = [CN_DIR / f"{name}.md" for name in names]
     missing = [str(path.relative_to(ROOT)) for path in files if not path.exists()]
     if missing:
@@ -258,6 +259,9 @@ def browser_flags(profile: Path) -> list[str]:
     return [
         "--headless=new",
         "--disable-gpu",
+        "--no-proxy-server",
+        "--disable-background-networking",
+        "--disable-component-update",
         "--no-first-run",
         "--disable-extensions",
         "--run-all-compositor-stages-before-draw",
@@ -268,16 +272,20 @@ def browser_flags(profile: Path) -> list[str]:
 
 def verify_mermaid(browser: Path, url: str, expected_count: int) -> None:
     with tempfile.TemporaryDirectory(prefix="png-handbook-browser-") as profile:
-        result = subprocess.run(
-            [str(browser), *browser_flags(Path(profile)), "--dump-dom", url],
-            cwd=ROOT,
-            check=True,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            timeout=180,
-        )
+        try:
+            result = subprocess.run(
+                [str(browser), *browser_flags(Path(profile)), "--dump-dom", url],
+                cwd=ROOT,
+                check=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                timeout=60,
+            )
+            stdout = result.stdout
+        except subprocess.TimeoutExpired as error:
+            stdout = error.stdout or b""
 
-    document = result.stdout.decode("utf-8", errors="replace")
+    document = stdout.decode("utf-8", errors="replace")
     rendered_count = document.count('data-processed="true"')
     svg_count = len(re.findall(r"<svg(?:\s|>)", document))
     if rendered_count < expected_count or svg_count < expected_count:
@@ -410,7 +418,8 @@ def print_pdf(
         url = f"http://127.0.0.1:{port}/pdf-book.html"
         for _ in range(50):
             try:
-                urllib.request.urlopen(url, timeout=1).close()
+                request = urllib.request.Request(url, method="HEAD")
+                urllib.request.urlopen(request, timeout=1).close()
                 break
             except OSError:
                 time.sleep(0.1)
@@ -432,7 +441,11 @@ def print_pdf(
                 f"--print-to-pdf={output}",
                 url,
             ]
-            subprocess.run(command, cwd=ROOT, check=True, timeout=180)
+            try:
+                subprocess.run(command, cwd=ROOT, check=True, timeout=60)
+            except subprocess.TimeoutExpired:
+                if not output.is_file() or output.stat().st_size < 10_000:
+                    raise
     finally:
         server.shutdown()
         server.server_close()
