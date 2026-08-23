@@ -33,6 +33,11 @@ export default withMermaid(
     lang: 'zh-CN',
     title: 'PNG 图像格式、解码算法与工程实现',
     description: '从 PNG 文件格式到软硬件解码器实现的系统手册',
+    vite: {
+      optimizeDeps: {
+        include: ['fastdom', 'fastdom/extensions/fastdom-promised.js'],
+      },
+    },
     cleanUrls: true,
     lastUpdated: true,
     themeConfig: {
