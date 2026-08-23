@@ -1,0 +1,10 @@
+@media (min-width: 960px) {
+  .VPSidebar {
+    top: calc(var(--vp-layout-top-height, 0px) + var(--vp-nav-height)) !important;
+    padding-top: 0 !important;
+  }
+
+  .VPSidebar .curtain {
+    display: none !important;
+  }
+}
