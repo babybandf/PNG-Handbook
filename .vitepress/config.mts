@@ -16,7 +16,7 @@ const chapters = [
   { text: '06. DEFLATE Decoder - RFC 1951', link: '/cn/06' },
   { text: '06-1 PNG Huffman 编码详解', link: '/cn/06-1' },
   { text: '07. Scanline Filter 与重建', link: '/cn/07' },
-  { text: '08. Adam7', link: '/cn/08' },
+  { text: '08. Adam7 原理与解码流程', link: '/cn/08' },
   { text: '09. 颜色、Alpha 与输出', link: '/cn/09' },
   { text: '10. 编码器', link: '/cn/10' },
   { text: '11. 硬件架构', link: '/cn/11' },

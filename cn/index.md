@@ -14,7 +14,7 @@
 6. [DEFLATE Decoder - RFC 1951](/cn/06)
 	- [06-1 PNG Huffman 编码详解](/cn/06-1)
 7. [Scanline Filter 与重建](/cn/07)
-8. [Adam7](/cn/08)
+8. [Adam7 原理与解码流程](/cn/08)
 9. [颜色、Alpha 与输出](/cn/09)
 10. [编码器](/cn/10)
 11. [硬件架构](/cn/11)
