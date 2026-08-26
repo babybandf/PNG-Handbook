@@ -10,7 +10,7 @@
 
 ## 目录与职责
 
-- `cn/00.md` 至 `cn/15.md` 及 `cn/06-1.md`：独立维护的章节文件，文件编号与一级标题编号一致；废弃文档存放在 `deprecated/`。
+- `cn/00.md` 至 `cn/15.md` 及 `cn/02-1.md`、`cn/06-1.md`：独立维护的章节文件，文件编号与一级标题编号一致；废弃文档存放在 `deprecated/`。
 - `cn/index.md`：手工维护的全书目录页，不由拆分脚本生成。
 - `index.md`：VitePress 首页。
 - `.vitepress/config.mts`：站点导航、侧栏、搜索、Markdown 和 Mermaid 配置。

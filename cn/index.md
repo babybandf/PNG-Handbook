@@ -8,6 +8,7 @@
 
 1. [建立整体认识](/cn/01)
 2. [PNG 文件格式与 Chunk](/cn/02)
+	- [02-1 Grayscale 转 RGB](/cn/02-1)
 3. [像素与 Scanline](/cn/03)
 4. [完整 Decoder 数据流](/cn/04)
 5. [zlib](/cn/05)

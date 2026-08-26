@@ -10,6 +10,7 @@ const chapters = [
   { text: '00. 前言', link: '/cn/00' },
   { text: '01. 建立整体认识', link: '/cn/01' },
   { text: '02. PNG 文件格式与 Chunk', link: '/cn/02' },
+  { text: '02-1 Grayscale 转 RGB', link: '/cn/02-1' },
   { text: '03. 像素与 Scanline', link: '/cn/03' },
   { text: '04. 完整 Decoder 数据流', link: '/cn/04' },
   { text: '05. zlib', link: '/cn/05' },

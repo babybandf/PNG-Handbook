@@ -22,7 +22,7 @@ npm run docs:dev
 npm run docs:build
 ```
 
-全书内容按独立章节维护在 `cn/00.md` 至 `cn/15.md`，以及 `cn/06-1.md`；废弃文档存放在 `deprecated/`。
+全书内容按独立章节维护在 `cn/00.md` 至 `cn/15.md`，以及 `cn/02-1.md`、`cn/06-1.md`；废弃文档存放在 `deprecated/`。
 
 ## 生成 PDF
 

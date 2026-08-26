@@ -115,7 +115,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def chapter_files() -> list[Path]:
-    names = [f"{index:02d}" for index in range(7)]
+    names = ["00", "01", "02", "02-1"]
+    names.extend(f"{index:02d}" for index in range(3, 7))
     names.append("06-1")
     names.extend(f"{index:02d}" for index in range(7, 15))
     names.extend(("14-1", "15"))
