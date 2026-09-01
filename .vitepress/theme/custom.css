@@ -7,4 +7,18 @@
   .VPSidebar .curtain {
     display: none !important;
   }
+
+  .VPNavBar .content-body > .search { order: 0; }
+  .VPNavBar .content-body > .menu { order: 1; }
+  .VPNavBar .content-body > .translations { order: 2; }
+  .VPNavBar .content-body > .pdf-download { order: 3; }
+  .VPNavBar .content-body > .appearance { order: 4; }
+  .VPNavBar .content-body > .social-links { order: 5; }
+  .VPNavBar .content-body > .extra { order: 6; }
+}
+
+@media (max-width: 959px) {
+  .VPNavBar .content-body > .pdf-download {
+    display: none;
+  }
 }
