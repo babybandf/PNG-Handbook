@@ -32,16 +32,20 @@ npm run docs:build
 python -m pip install -r requirements.txt
 ```
 
-运行 Python 脚本生成合订 PDF：
+矢量公式需要 pdflatex，推荐免 sudo 的 [TinyTeX](https://yihui.org/tinytex/)，安装后执行 `tlmgr install standalone xcolor lmodern cm-super`。
+
+运行构建脚本生成合订 PDF：
 
 ```bash
-python scripts/build_pdf.py
+python scripts/minimax_pdf/build.py
 ```
 
-PDF 默认输出并覆盖根目录的 `PNG图像格式解码算法与工程实现.pdf`。正文不插入额外的详细目录页；脚本会生成覆盖一至三级标题的完整 PDF 书签，并验证每个书签都能跳转到正确页面。Mermaid 会通过 VitePress 和本机 Edge/Chrome 渲染为图形后写入 PDF。
+PDF 默认输出并覆盖根目录的 `PNG图像格式解码算法与工程实现.pdf`。正文不插入额外的详细目录页；脚本会生成覆盖一至四级标题的完整 PDF 书签并验证跳转目标与版面，公式通过 pdflatex 排版为矢量可复制文本，Mermaid 通过 Playwright 渲染为图形后写入 PDF。
 
-可用 `--output` 指定输出路径：
+可用 `--output` 指定输出路径，`--accent` 覆盖主色，`--math-engine latex|katex|matplotlib` 选择公式引擎：
 
 ```bash
-python scripts/build_pdf.py --output png-handbook.pdf
+python scripts/minimax_pdf/build.py --output png-handbook.pdf --accent "#00BFFF"
 ```
+
+配色、字体、章节顺序等设计令牌集中在 `scripts/minimax_pdf/config.json`，更多说明见 `scripts/minimax_pdf/README.md`。
