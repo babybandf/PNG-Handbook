@@ -11,15 +11,19 @@ import render_cover
 
 
 class CoverTokenTests(unittest.TestCase):
-    def test_uses_cover_accent_for_cover_graphics(self) -> None:
+    def test_renders_light_home_cover_without_legacy_decoration(self) -> None:
         config_path = Path(__file__).with_name('config.json')
         cfg = json.loads(config_path.read_text(encoding='utf-8'))
-        cfg['cover_accent'] = '#38BDF8'
 
         html = render_cover.render_html(cfg)
 
-        self.assertIn('background: #38BDF8', html)
-        self.assertIn('fill="#38BDF8"', html)
+        self.assertIn('class="home-hero"', html)
+        self.assertIn('top: 290px', html)
+        self.assertIn('color: #3451B2', html)
+        self.assertIn('从格式规范到软硬件解码器', html)
+        self.assertIn('系统理解 Chunk、zlib、DEFLATE、Scanline、Adam7 与工程实现', html)
+        self.assertNotIn('class="bar"', html)
+        self.assertNotIn('<svg', html)
 
 
 if __name__ == '__main__':

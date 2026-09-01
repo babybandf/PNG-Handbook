@@ -13,10 +13,15 @@
   "output_name": "PNG图像格式解码算法与工程实现.pdf",
 
   "accent": "#2563EB",
-  "accent_strong": "#38BDF8",
-  "cover_accent": "#38BDF8",
-  "cover_bg": "#0B1220",
-  "cover_ink": "#F1F5F9",
+  "accent_strong": "#3451B2",
+  "cover_accent": "#3451B2",
+  "cover_bg": "#FFFFFF",
+  "cover_ink": "#3451B2",
+  "cover_text": "#3C3C43",
+  "cover_tagline_color": "#67676C",
+  "cover_hero_text": "从格式规范到软硬件解码器",
+  "cover_tagline": "系统理解 Chunk、zlib、DEFLATE、Scanline、Adam7 与工程实现",
+  "cover_hero_top": 290,
   "dark": "#12355B",
   "body_text": "#1E293B",
   "muted": "#64748B",
@@ -49,7 +54,7 @@
     "bold": "HeitiSCMed"
   },
 
-  "cover_font_title": "'Songti SC', 'Noto Serif SC', 'STSong', serif",
+  "cover_font_title": "'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif",
   "cover_font_body": "'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif",
 
   "mermaid": {

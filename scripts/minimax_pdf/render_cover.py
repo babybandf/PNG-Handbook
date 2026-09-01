@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the light cover HTML from config.json."""
+"""Generate a VitePress-home-inspired cover HTML from config.json."""
 
 import argparse
 import html
@@ -10,25 +10,8 @@ from pathlib import Path
 PAGE_W, PAGE_H = 794, 1123
 
 
-def dot_grid(accent: str, opacity: float = 0.10) -> str:
-    cols, rows, gap, r = 14, 10, 24, 1.6
-    dots = []
-    for row in range(rows):
-        for col in range(cols):
-            cx = col * gap
-            cy = row * gap
-            dots.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{accent}"/>')
-    return (
-        f'<svg style="position:absolute;right:56px;bottom:56px;'
-        f'width:{(cols - 1) * gap + 2 * r}px;height:{(rows - 1) * gap + 2 * r}px;'
-        f'pointer-events:none;opacity:{opacity}" xmlns="http://www.w3.org/2000/svg">'
-        + "".join(dots) + "</svg>"
-    )
-
-
 def render_html(cfg: dict) -> str:
     esc = html.escape
-    cover_accent = cfg.get("cover_accent", cfg["accent"])
     return f"""<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8">
@@ -43,50 +26,37 @@ html, body {{
   background: {cfg['cover_bg']}; overflow: hidden;
   font-family: {cfg['cover_font_body']};
 }}
-.bar {{
-  position: absolute; left: 0; top: 0;
-  width: 8px; height: {PAGE_H}px; background: {cover_accent};
+.home-hero {{
+  position: absolute; left: 64px; right: 58px; top: {cfg['cover_hero_top']}px;
 }}
-.content {{
-  position: absolute; left: 92px; right: 84px; top: 0; bottom: 0;
-  display: flex; flex-direction: column; justify-content: center;
-  padding-bottom: 60px;
-}}
-.eyebrow {{
-  font-size: 10px; font-weight: 600; letter-spacing: 0.26em;
-  color: {cfg['accent_strong']}; margin-bottom: 44px;
-}}
-.title {{
+.name {{
   font-family: {cfg['cover_font_title']};
-  font-weight: 700; font-size: 52px; line-height: 1.32;
-  color: {cfg['cover_ink']}; max-width: 580px;
+  font-weight: 700; font-size: 52px; line-height: 1.25;
+  letter-spacing: -0.035em; color: {cfg['cover_accent']};
   word-wrap: break-word;
 }}
-.rule {{
-  width: 56px; height: 3px; background: {cover_accent};
-  margin: 34px 0 26px;
+.text {{
+  margin-top: 22px; font-weight: 700; font-size: 42px; line-height: 1.3;
+  letter-spacing: -0.025em; color: {cfg['cover_text']};
 }}
-.subtitle {{
-  font-size: 13px; color: {cfg['muted']}; line-height: 1.8;
-  max-width: 500px;
+.tagline {{
+  margin-top: 34px; max-width: 620px; font-size: 20px; font-weight: 500;
+  line-height: 1.55; color: {cfg['cover_tagline_color']};
 }}
 .meta {{
-  position: absolute; left: 92px; bottom: 76px;
-  font-size: 11px; color: {cfg['muted']}; letter-spacing: 0.05em;
+  position: absolute; left: 64px; bottom: 66px;
+  font-size: 11px; color: {cfg['cover_tagline_color']}; letter-spacing: 0.04em;
 }}
 </style>
 </head>
 <body>
 <div class="page">
-  <div class="bar"></div>
-  {dot_grid(cover_accent)}
-  <div class="content">
-    <div class="eyebrow">{esc(cfg['doc_type'])} &nbsp;·&nbsp; {esc(cfg['date'])}</div>
-    <div class="title">{esc(cfg['title'])}</div>
-    <div class="rule"></div>
-    <div class="subtitle">{esc(cfg['subtitle'])}</div>
+  <div class="home-hero">
+    <div class="name">{esc(cfg['title'])}</div>
+    <div class="text">{esc(cfg['cover_hero_text'])}</div>
+    <div class="tagline">{esc(cfg['cover_tagline'])}</div>
   </div>
-  <div class="meta">{esc(cfg['author'])}</div>
+  <div class="meta">{esc(cfg['author'])} &nbsp;·&nbsp; {esc(cfg['date'])}</div>
 </div>
 </body>
 </html>
