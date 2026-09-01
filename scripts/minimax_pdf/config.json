@@ -1,0 +1,79 @@
+{
+  "title": "PNG 图像格式、解码算法与工程实现",
+  "subtitle": "从文件格式、Chunk、zlib、DEFLATE，到 Scanline 重建、Adam7、颜色处理与硬件架构",
+  "author": "PNG Handbook",
+  "date": "版本 0.9.4 · 2026-08-26",
+  "doc_type": "TECHNICAL HANDBOOK",
+  "subject": "PNG 文件格式、解码算法与工程实现",
+  "chapters": [
+    "00", "01", "02", "02-1", "03", "04", "05", "06", "06-1", "07",
+    "08", "09", "10", "11", "12", "13", "14", "14-1", "15"
+  ],
+  "chapter_dir": "cn",
+  "output_name": "PNG图像格式解码算法与工程实现.pdf",
+
+  "accent": "#33A6B8",
+  "accent_strong": "#14606E",
+  "cover_bg": "#F5FBFC",
+  "cover_ink": "#17313A",
+  "dark": "#142A31",
+  "body_text": "#274048",
+  "muted": "#7E979E",
+  "accent_lt": "#E8F5F8",
+  "box_border": "#D5E7EB",
+
+  "table_header_bg": "#DFF2F5",
+  "table_header_text": "#14606E",
+  "table_row_alt": "#F2FAFB",
+  "code_bg": "#F3FAFB",
+  "callout_bg": "#EFF8FA",
+
+  "fonts": {
+    "body": ["Songti", 6],
+    "body_bold": ["HeitiSCMed", 0],
+    "heading": ["HeitiSCMed", 0],
+    "code_cjk": ["HeitiSCLight", 0],
+    "fallback": ["ArialUni", 0]
+  },
+  "font_files": {
+    "Songti": ["/System/Library/Fonts/Supplemental/Songti.ttc", 6],
+    "Songti-Bold": ["/System/Library/Fonts/Supplemental/Songti.ttc", 1],
+    "HeitiSCMed": ["/System/Library/Fonts/STHeiti Medium.ttc", 1],
+    "HeitiSCLight": ["/System/Library/Fonts/STHeiti Light.ttc", 1],
+    "ArialUni": ["/Library/Fonts/Arial Unicode.ttf", 0]
+  },
+  "font_family_map": {
+    "normal": "Songti",
+    "bold": "HeitiSCMed"
+  },
+
+  "cover_font_title": "'Songti SC', 'Noto Serif SC', 'STSong', serif",
+  "cover_font_body": "'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'Microsoft YaHei', sans-serif",
+
+  "mermaid": {
+    "primary_color": "#E4F4F7",
+    "primary_border_color": "#33A6B8",
+    "primary_text_color": "#17313A",
+    "line_color": "#8FB4BC",
+    "font_size": "14px",
+    "font_family": "'PingFang SC', 'Hiragino Sans GB', 'Heiti SC', 'Helvetica Neue', Arial, sans-serif"
+  },
+
+  "type_scale": {
+    "size_h1": 20,
+    "size_h2": 14.5,
+    "size_h3": 11.5,
+    "size_body": 10.5,
+    "size_caption": 8.5,
+    "size_meta": 8,
+    "line_gap": 17,
+    "section_gap": 24,
+    "para_gap": 8
+  },
+  "margins": {
+    "left": 79,
+    "right": 79,
+    "top": 79,
+    "bottom": 71
+  }
+}
