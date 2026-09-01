@@ -5,3 +5,5 @@ package-lock.json
 .vitepress/cache/
 .vitepress/dist/
 *.log
+__pycache__/
+*.pyc

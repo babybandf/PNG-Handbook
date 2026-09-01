@@ -204,11 +204,11 @@ def make_styles(t: dict) -> dict:
         "table_cell": cjk(ParagraphStyle("TblC", fontName=bf, fontSize=9,
                            leading=12.5, textColor=HexColor(dk))),
         "code": ParagraphStyle("Code", fontName="Courier", fontSize=8.5,
-                               leading=12, textColor=HexColor(dk)),
+                               leading=12, textColor=HexColor(t["code_text"])),
         "code_lang": ParagraphStyle("CodeLang", fontName="Helvetica", fontSize=7,
                                     leading=10, textColor=HexColor(mu)),
         "math_fallback": ParagraphStyle("MathFb", fontName="Courier", fontSize=9,
-                                        leading=13, textColor=HexColor(dk)),
+                                        leading=13, textColor=HexColor(t["code_text"])),
         "eq_label": ParagraphStyle("EqLabel", fontName="Helvetica", fontSize=9,
                                    leading=12, textColor=HexColor(mu)),
     }

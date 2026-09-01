@@ -28,6 +28,7 @@ def dot_grid(accent: str, opacity: float = 0.10) -> str:
 
 def render_html(cfg: dict) -> str:
     esc = html.escape
+    cover_accent = cfg.get("cover_accent", cfg["accent"])
     return f"""<!DOCTYPE html>
 <html>
 <head><meta charset="UTF-8">
@@ -44,7 +45,7 @@ html, body {{
 }}
 .bar {{
   position: absolute; left: 0; top: 0;
-  width: 8px; height: {PAGE_H}px; background: {cfg['accent']};
+  width: 8px; height: {PAGE_H}px; background: {cover_accent};
 }}
 .content {{
   position: absolute; left: 92px; right: 84px; top: 0; bottom: 0;
@@ -62,7 +63,7 @@ html, body {{
   word-wrap: break-word;
 }}
 .rule {{
-  width: 56px; height: 3px; background: {cfg['accent']};
+  width: 56px; height: 3px; background: {cover_accent};
   margin: 34px 0 26px;
 }}
 .subtitle {{
@@ -78,7 +79,7 @@ html, body {{
 <body>
 <div class="page">
   <div class="bar"></div>
-  {dot_grid(cfg['accent'])}
+  {dot_grid(cover_accent)}
   <div class="content">
     <div class="eyebrow">{esc(cfg['doc_type'])} &nbsp;·&nbsp; {esc(cfg['date'])}</div>
     <div class="title">{esc(cfg['title'])}</div>

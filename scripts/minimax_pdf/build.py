@@ -222,6 +222,7 @@ def make_tokens(cfg: dict, engine: str, math_meta_path: Path) -> dict:
         "table_header_text": cfg["table_header_text"],
         "table_row_alt": cfg["table_row_alt"],
         "code_bg": cfg["code_bg"],
+        "code_text": cfg["code_text"],
         "callout_bg": cfg["callout_bg"],
         "font_display_rl": fonts["heading"][0],
         "font_body_rl": fonts["body"][0],
