@@ -61,20 +61,22 @@ async function download() {
 }
 
 .pdf-btn {
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  padding: 4px 12px;
-  background: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  line-height: var(--vp-nav-height);
+  font-family: inherit;
   font-size: 14px;
-  line-height: 20px;
+  font-weight: 500;
+  color: var(--vp-c-text-1);
+  background: transparent;
+  border: none;
   cursor: pointer;
-  transition: border-color 0.25s, color 0.25s;
+  transition: color 0.25s;
   white-space: nowrap;
 }
 
 .pdf-btn:hover:not(:disabled) {
-  border-color: var(--vp-c-brand-1);
   color: var(--vp-c-brand-1);
 }
 
